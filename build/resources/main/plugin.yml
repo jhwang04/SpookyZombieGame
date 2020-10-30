@@ -1,0 +1,19 @@
+name: SpookyZombieGame
+main: com.justinhwang.spookyzombiegame.SpookyZombieGame
+version: 1.0.0
+api-version: 1.16
+commands:
+  spookyzombiegame:
+    description: Access to enabling/disabling the SpookyZombieGame plugin
+    permission: spookyzombiegame.spookyzombiegame
+    permission-message: Only server operators can use this command!
+  highscores:
+    description: View the current highest scoring games.
+    permission: spookyzombiegame.highscores
+permissions:
+  spookyzombiegame.spookyzombiegame:
+    description: Allows user to enable and disable the SpookyZombieGame plugin
+    default: op
+  spookyzombiegame.highscores:
+    description: Allows user to see highscores
+    default: true

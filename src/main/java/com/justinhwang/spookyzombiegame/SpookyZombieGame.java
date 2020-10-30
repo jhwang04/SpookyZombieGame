@@ -1,5 +1,6 @@
 package com.justinhwang.spookyzombiegame;
 
+import com.justinhwang.spookyzombiegame.commands.SpookyZombieGameCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,6 +27,7 @@ public class SpookyZombieGame extends JavaPlugin {
         if(!highscoreFile.exists())
             saveResource("highscores.yml", false);
 
+        getCommand("spookyzombiegame").setExecutor(new SpookyZombieGameCommand(this));
 
     }
 
