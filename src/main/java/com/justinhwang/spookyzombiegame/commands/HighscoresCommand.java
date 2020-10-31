@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,10 +46,10 @@ public class HighscoresCommand implements CommandExecutor {
             plugin.saveHighscores();
         } else {
             for(int i = 1; i <= 3; i++) {
-                if(playerUUIDList.size() > 0) {
+                if (playerUUIDList.size() > 0) {
                     String highestUUID = null;
-                    for(String uuid : playerUUIDList) {
-                        if(highestUUID == null || plugin.getHighscoreFileConfig().getInt("highscores." + uuid) >= plugin.getHighscoreFileConfig().getInt("highscores." + highestUUID))
+                    for (String uuid : playerUUIDList) {
+                        if (highestUUID == null || plugin.getHighscoreFileConfig().getInt("highscores." + uuid) >= plugin.getHighscoreFileConfig().getInt("highscores." + highestUUID))
                             highestUUID = uuid;
                     }
                     sender.sendMessage(ChatColor.LIGHT_PURPLE + "#" + i + ") " + ChatColor.GOLD + Bukkit.getOfflinePlayer(UUID.fromString(highestUUID)).getName() + " - " + ChatColor.LIGHT_PURPLE + plugin.getHighscoreFileConfig().getInt("highscores." + highestUUID) + " pts");
@@ -57,6 +58,10 @@ public class HighscoresCommand implements CommandExecutor {
                     sender.sendMessage(ChatColor.LIGHT_PURPLE + "#" + i + ") " + ChatColor.WHITE + "N/A");
                 }
             }
+        }
+        if(sender instanceof Player) {
+            Player p = (Player) sender;
+            sender.sendMessage("\n" + ChatColor.GOLD + sender.getName() + " - " + ChatColor.LIGHT_PURPLE + plugin.getHighscoreFileConfig().getInt("highscores." + p.getUniqueId()) + " pts");
         }
 
         return true;

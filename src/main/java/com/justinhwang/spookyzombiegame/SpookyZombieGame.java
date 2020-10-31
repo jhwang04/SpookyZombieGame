@@ -3,6 +3,7 @@ package com.justinhwang.spookyzombiegame;
 import com.justinhwang.spookyzombiegame.commands.HighscoresCommand;
 import com.justinhwang.spookyzombiegame.commands.SpookyZombieGameCommand;
 import com.justinhwang.spookyzombiegame.events.LoginEvent;
+import com.justinhwang.spookyzombiegame.events.MobDeathEvent;
 import com.justinhwang.spookyzombiegame.events.MobSpawningEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,6 +30,8 @@ public class SpookyZombieGame extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        players = new HashMap<Player, Integer>();
+
         //ensures that a config.yml file exists, does NOT restore to default if it already exists.
         saveDefaultConfig();
         config = this.getConfig();
@@ -46,6 +49,8 @@ public class SpookyZombieGame extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MobSpawningEvent(this), this);
 
         getServer().getPluginManager().registerEvents(new LoginEvent(this), this);
+
+        getServer().getPluginManager().registerEvents(new MobDeathEvent(this), this);
 
         Bukkit.getLogger().info(ChatColor.LIGHT_PURPLE + "SpookyZombieGame plugin has been enabled");
 
