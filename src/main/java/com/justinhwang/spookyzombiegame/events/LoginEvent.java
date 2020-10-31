@@ -69,6 +69,7 @@ public class LoginEvent implements Listener {
         helmetMeta.setDisplayName(ChatColor.GOLD + "Fancy hat");
         helmet.setItemMeta(helmetMeta);
 
+        p.getInventory().setItem(0, weapon);
         p.getInventory().setItem(39, helmet);
     }
 }
