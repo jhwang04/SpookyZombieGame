@@ -61,7 +61,8 @@ public class HighscoresCommand implements CommandExecutor {
         }
         if(sender instanceof Player) {
             Player p = (Player) sender;
-            sender.sendMessage("\n" + ChatColor.GOLD + sender.getName() + " - " + ChatColor.LIGHT_PURPLE + plugin.getHighscoreFileConfig().getInt("highscores." + p.getUniqueId()) + " pts");
+            sender.sendMessage("\n"+ ChatColor.LIGHT_PURPLE + "Your highscore - " + ChatColor.GOLD + sender.getName() + " - " + ChatColor.LIGHT_PURPLE + plugin.getHighscoreFileConfig().getInt("highscores." + p.getUniqueId()) + " pts");
+            sender.sendMessage("\n"+ ChatColor.LIGHT_PURPLE + "Current Score - " + ChatColor.GOLD + sender.getName() + " - " + ChatColor.LIGHT_PURPLE + plugin.players.get(p) + " pts");
         }
 
         return true;

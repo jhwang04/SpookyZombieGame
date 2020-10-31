@@ -45,10 +45,11 @@ public class LoginEvent implements Listener {
     }
 
     private void giveWeapon(Player p) {
-        ItemStack weapon = new ItemStack(Material.NETHERITE_PICKAXE);
+        ItemStack weapon = new ItemStack(Material.STONE_SWORD);
         ItemMeta meta = weapon.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_PURPLE + "Zombie Killer");
         meta.setUnbreakable(true);
+        meta.addEnchant(Enchantment.SWEEPING_EDGE, 5, true);
         List<String> lore = new ArrayList<String>();
         lore.add(ChatColor.GOLD + "- Kill mobs for points");
         lore.add(ChatColor.GOLD + "- Points reset on death");
